@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3.3'
 
 services:
   zoo1:
@@ -10,6 +10,8 @@ services:
     environment:
       ZOO_MY_ID: 1
       ZOO_SERVERS: server.1=0.0.0.0:2888:3888 server.2=zoo2:2888:3888 server.3=zoo3:2888:3888
+    volumes:
+      - ${PWD}/zookeeper/zoo.cfg:/conf/zoo.cfg
 
   zoo2:
     image: zookeeper
@@ -20,6 +22,8 @@ services:
     environment:
       ZOO_MY_ID: 2
       ZOO_SERVERS: server.1=zoo1:2888:3888 server.2=0.0.0.0:2888:3888 server.3=zoo3:2888:3888
+    volumes:
+      - ${PWD}/zookeeper/zoo.cfg:/conf/zoo.cfg
 
   zoo3:
     image: zookeeper
@@ -30,3 +34,6 @@ services:
     environment:
       ZOO_MY_ID: 3
       ZOO_SERVERS: server.1=zoo1:2888:3888 server.2=zoo2:2888:3888 server.3=0.0.0.0:2888:3888
+    volumes:
+      - ${PWD}/zookeeper/zoo.cfg:/conf/zoo.cfg
+
