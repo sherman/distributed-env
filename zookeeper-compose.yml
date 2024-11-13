@@ -10,7 +10,6 @@ services:
       - 8081:8080
     environment:
       ZOO_MY_ID: 1
-      ZOO_SERVERS: server.1=0.0.0.0:2888:3888 server.2=zoo2:2888:3888 server.3=zoo3:2888:3888
     volumes:
       - ${PWD}/zookeeper/zoo.cfg:/conf/zoo.cfg
 
@@ -23,7 +22,6 @@ services:
       - 8082:8080
     environment:
       ZOO_MY_ID: 2
-      ZOO_SERVERS: server.1=zoo1:2888:3888 server.2=0.0.0.0:2888:3888 server.3=zoo3:2888:3888
     volumes:
       - ${PWD}/zookeeper/zoo.cfg:/conf/zoo.cfg
 
@@ -36,7 +34,6 @@ services:
       - 8083:8080
     environment:
       ZOO_MY_ID: 3
-      ZOO_SERVERS: server.1=zoo1:2888:3888 server.2=zoo2:2888:3888 server.3=0.0.0.0:2888:3888
     volumes:
       - ${PWD}/zookeeper/zoo.cfg:/conf/zoo.cfg
 
